@@ -294,9 +294,11 @@ export default function App() {
             </View>
             <View style={styles.pricesWrapper}>
               {prices.map((priceData, index) => (
-                <Text key={index} style={styles.item}>
-                  {moment(priceData.startDate).tz('Europe/Helsinki').format('HH')} - {moment(priceData.endDate).tz('Europe/Helsinki').format('HH')} Hinta: {priceData.price} snt/kWh
-                </Text>
+                <View key={index} style={styles.itemWrapper}>
+                  <Text key={index} style={styles.item}>
+                    {moment(priceData.startDate).tz('Europe/Helsinki').format('HH')} - {moment(priceData.endDate).tz('Europe/Helsinki').format('HH')} Hinta: {priceData.price} snt/kWh
+                  </Text>
+                </View>
               ))}
             </View>
           </View>
@@ -321,8 +323,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     margin: 10,
     color: 'white',
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
+  },
+
+  itemWrapper: {
+    borderRadius: 10,
+    margin: 5,
+    width: FULL_WIDTH - 20,
+    backgroundColor: 'black',
   },
 
   pricesWrapper: {
@@ -335,6 +342,7 @@ const styles = StyleSheet.create({
   dateHeader: {
     fontSize: 20,
     margin: 10,
+    textAlign: 'center',
   },
 
   dayTitleWrapper: {
